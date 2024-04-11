@@ -1,0 +1,18 @@
+# use alpine as base image
+FROM alpine as build-env
+# install build-base meta package inside build-env container
+RUN apk add --no-cache build-base
+# change directory to /app
+WORKDIR /app
+# copy all files from current directory inside the build-env container
+COPY . .
+# Compile the source code and generate hello binary executable file
+# RUN gcc -o hello helloworld.c
+RUN gcc -std=c99 -o app agent1.c array_reverse_stack1.c array_list1.c array_2d.c array_1d.c array_queue.c quick_arg_sort.c
+# use another container to run the program
+FROM alpine
+# copy binary executable to new container
+COPY --from=build-env /app/app /app/app
+WORKDIR /app
+# at last run the program
+CMD ["/app/app"] 

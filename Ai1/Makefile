@@ -1,0 +1,2 @@
+app: memory_manager.c array_reverse_stack1.c array_list1.c array_2d.c array_1d.c array_queue.c quick_sort.c quick_arg_sort.c
+	gcc -std=c99 -o app memory_manager.c array_reverse_stack1.c array_list1.c array_2d.c array_1d.c array_queue.c quick_sort.c quick_arg_sort.c
